@@ -19,5 +19,5 @@ docker pull karalabe/xgo-latest
 go get github.com/karalabe/xgo
 
 # 3. build shared libraries
-xgo --targets=*/amd64 -buildmode=c-shared -out fmr github.com/liuzl/pyfmr/src
+xgo --targets=*/amd64 -buildmode=c-shared -out lib/fmr github.com/liuzl/pyfmr/src
 ```
