@@ -1,10 +1,23 @@
 #!/usr/bin/env python
 #-*- coding:utf-8 -*-
 
+import platform
+import pkg_resources
 import json
 import ctypes
 
-fmr = ctypes.CDLL('./fmr.so')
+sysname = platform.system()
+
+if sysname == 'Darwin':
+    lib_name = "fmr-darwin-10.6-amd64.dylib"
+elif sysname == 'Windows':
+    lib_name = "fmr-windows-4.0-amd64.dll"
+else:
+    lib_name = "fmr-linux-amd64.so"
+
+lib_path = pkg_resources.resource_filename('pyfmr', 'lib/{}'.format(lib_name))
+
+fmr = ctypes.CDLL(lib_path)
 charptr = ctypes.POINTER(ctypes.c_char)
 
 fmr.extractx.restype = charptr
