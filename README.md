@@ -12,12 +12,18 @@ https://github.com/liuzl/fmr
 
 ### Steps
 ```sh
-# 1. pull xgo docker image
+# 1. clone the git repo
+git clone https://github.com/liuzl/pyfmr && cd pyfmr
+
+# 2. pull xgo docker image
 docker pull karalabe/xgo-latest
 
-# 2. install xgo
+# 3. install xgo
 go get github.com/karalabe/xgo
 
-# 3. build shared libraries
-xgo --targets=*/amd64 -buildmode=c-shared -out lib/fmr github.com/liuzl/pyfmr/src
+# 4. build shared libraries
+xgo --targets=*/amd64 -buildmode=c-shared -out pyfmr/lib/fmr github.com/liuzl/pyfmr/src
+
+# 5. build wheel
+python3 setup.py sdist bdist_wheel
 ```
