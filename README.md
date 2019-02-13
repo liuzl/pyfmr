@@ -5,6 +5,11 @@ https://github.com/liuzl/fmr
 ## Usage
 [examples](https://github.com/liuzl/pyfmr/tree/master/examples)
 
+### Install `pyfmr` via pip
+```sh
+pip install pyfmr
+```
+
 ### Grammar file
 Save the following grammar content to file `sf.grammar`
 ```
