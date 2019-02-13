@@ -26,4 +26,7 @@ xgo --targets=*/amd64 -buildmode=c-shared -out pyfmr/lib/fmr github.com/liuzl/py
 
 # 5. build wheel
 python3 setup.py sdist bdist_wheel
+
+# 6. upload to pypi.org
+python3 -m twine upload dist/*
 ```
