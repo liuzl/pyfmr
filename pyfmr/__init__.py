@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 #-*- coding:utf-8 -*-
+''' A python wrapper for FMR'''
 
 import platform
 import pkg_resources
