@@ -6,7 +6,7 @@
 
 [examples](https://github.com/liuzl/pyfmr/tree/master/examples)
 
-### Install `pyfmr` via pip
+### Install pyfmr via pip
 
 ```sh
 pip install pyfmr
