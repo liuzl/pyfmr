@@ -1,18 +1,22 @@
 # pyfmr: a python wrapper for FMR
 
-https://github.com/liuzl/fmr
+[https://github.com/liuzl/fmr](https://github.com/liuzl/fmr)
 
 ## Usage
+
 [examples](https://github.com/liuzl/pyfmr/tree/master/examples)
 
 ### Install `pyfmr` via pip
+
 ```sh
 pip install pyfmr
 ```
 
 ### Grammar file
+
 Save the following grammar content to file `sf.grammar`
-```
+
+```fmr
 <flight> = <departure> <arrival> {nf.flight($1, $2)};
 [flight] = <arrival> <departure> {nf.flight($2, $1)};
 
@@ -40,8 +44,8 @@ Save the following grammar content to file `sf.grammar`
 ```
 
 ### Python example codes
-```py
 
+```py
 import pyfmr
 
 p = pyfmr.Parser("./sf.grammar")
@@ -64,10 +68,12 @@ for l in strs:
 *The cross compiling is done by [xgo](https://github.com/karalabe/xgo).*
 
 ### Prerequisites
+
 * Docker
 * Golang
 
 ### Steps
+
 ```sh
 # 1. clone the git repo
 git clone https://github.com/liuzl/pyfmr && cd pyfmr
