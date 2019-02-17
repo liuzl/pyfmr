@@ -79,6 +79,49 @@ func extractx(i int, l, s *C.char) *C.char {
 	return C.CString(`[` + strings.Join(ret, ",") + `]`)
 }
 
+//export parse
+func parse(i int, l, s *C.char) *C.char {
+	if i < 0 || i >= len(grammars) {
+		info = fmt.Sprintf("no grammar found with id %s", i)
+		return C.CString(`{"error":"no grammar"}`)
+	}
+	lg := grammars[i]
+	line := C.GoString(l)
+	start := C.GoString(s)
+	trees, err := lg.ExtractMaxAll(line, start)
+	if err != nil {
+		info = fmt.Sprintf("ExtractMaxAll error: %+v", err)
+		return C.CString(`{"error":` + strconv.Quote(err.Error()) + `}`)
+	}
+	var ret []string
+	for _, tree := range trees {
+		sem, err := tree.Semantic()
+		if err != nil {
+			info = fmt.Sprintf("Semantic error: %+v", err)
+			return C.CString(`{"error":` + strconv.Quote(err.Error()) + `}`)
+		} else {
+			ret = append(ret, strings.Replace(sem, "\t", " ", -1))
+		}
+	}
+	return C.CString(strings.Join(ret, "\t"))
+}
+
+//export frames
+func frames(i int, l *C.char) *C.char {
+	if i < 0 || i >= len(grammars) {
+		info = fmt.Sprintf("no grammar found with id %s", i)
+		return C.CString(`{"error":"no grammar"}`)
+	}
+	lg := grammars[i]
+	line := C.GoString(l)
+	ret, err := lg.FrameFMR(line)
+	if err != nil {
+		info = fmt.Sprintf("FrameFMR error: %+v", err)
+		return C.CString(`{"error":` + strconv.Quote(err.Error()) + `}`)
+	}
+	return C.CString(strings.Join(ret, "\t"))
+}
+
 //export gofree
 func gofree(cs *C.char) {
 	C.free(unsafe.Pointer(cs))

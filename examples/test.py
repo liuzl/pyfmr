@@ -1,5 +1,6 @@
 import pyfmr
-p = pyfmr.Parser("./sf.grammar")
+
+p = pyfmr.Parser("./cities.grammar")
 
 strs = [
     "直辖市：北京、上海、天津",
@@ -10,8 +11,11 @@ strs = [
 ]
 
 for l in strs:
-    ret = p.extract(l, "cities")
+    ret = p.extractx(l, "cities")
+    print(ret)
+    '''
     for item in ret:
         print(item)
+    '''
     print("="*80)
 

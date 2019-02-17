@@ -50,3 +50,20 @@ class Parser:
         ret = self.extractx(text, start)
         if ret is None: return None
         return json.loads(ret)
+
+    def parse(self, text, start):
+        if self.grammar_index < 0:
+            return None
+        ret = fmr.parse(self.grammar_index, c(text), c(start))
+        value = ctypes.cast(ret, ctypes.c_char_p).value
+        fmr.gofree(ret)
+        return value.decode('utf-8')
+
+    def frames(self, text):
+        if self.grammar_index < 0:
+            return None
+        ret = fmr.frames(self.grammar_index, c(text))
+        value = ctypes.cast(ret, ctypes.c_char_p).value
+        fmr.gofree(ret)
+        return value.decode('utf-8')
+
