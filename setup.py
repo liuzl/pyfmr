@@ -16,7 +16,7 @@ setup(
     ]},
     include_package_data=True,
     distclass=BinaryDistribution,
-    version="0.0.1",
+    version="0.0.2",
     author="Zhanliang Liu",
     author_email="liang@zliu.org",
     description="A python wrapper for FMR",
