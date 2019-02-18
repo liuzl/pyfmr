@@ -38,7 +38,7 @@ func init_grammar(s *C.char) int {
 	var err error
 	g, err = fmr.GrammarFromFile(f)
 	if err != nil {
-		info = fmt.Sprintln("load grammar file %s error: %+v", f, err.Error())
+		info = fmt.Sprintf("load grammar file %s error: %+v", f, err.Error())
 		return -1
 	}
 	grammars = append(grammars, g)
