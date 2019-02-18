@@ -22,6 +22,9 @@ fmr = ctypes.CDLL(lib_path)
 charptr = ctypes.POINTER(ctypes.c_char)
 
 fmr.extractx.restype = charptr
+fmr.get_last_error.restype = charptr
+fmr.parse.restype = charptr
+fmr.frames.restype = charptr
 
 def c(s): return ctypes.create_string_buffer(s.encode('utf-8'))
 
