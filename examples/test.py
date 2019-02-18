@@ -45,4 +45,5 @@ def frames():
         print("="*80)
 
 if __name__ == "__main__":
+    extractx()
     frames()
