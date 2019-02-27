@@ -2,6 +2,34 @@
 
 [https://github.com/liuzl/fmr](https://github.com/liuzl/fmr)
 
+## A glance overview of what can FMR do
+
+```js
+// semantic parsing
+"五与5.8的和的平方的1.5次方与two的和减去261.712" =>
+nf.math.sub(
+  nf.math.sum(
+    nf.math.pow(
+      nf.math.pow(
+        nf.math.sum(
+          5,
+          nf.math.to_number("5.8")
+        ),
+        2
+      ),
+      nf.math.to_number("1.5")
+    ),
+    2
+  ),
+  nf.math.to_number("261.712")
+); // denotation: 1000
+
+// slot filling
+"从上海到天津的机票" => nf.flight("上海", "天津");
+"到重庆，明天，从北京" => nf.flight("北京", "重庆");
+"到上海去" => nf.flight(null, "上海");
+```
+
 ## Usage
 
 [examples](https://github.com/liuzl/pyfmr/tree/master/examples)
