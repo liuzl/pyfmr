@@ -24,7 +24,7 @@ def extractx():
 
     for l in strs:
         ret = p.extractx(l, "cities")
-        print(ret)
+        print("NL:[%s], LF:[%s]" % (l, ret))
         print("="*80)
 
 def frames():
@@ -41,7 +41,7 @@ def frames():
 
     for l in strs:
         ret = p.frames(l)
-        print(ret)
+        print("NL:[%s], LF:[%s]" % (l, ret))
         print("="*80)
 
 if __name__ == "__main__":
