@@ -94,4 +94,5 @@
          | <en_number> "and" <en_decimal> {nf.math.sum($1,$3)}
          ;
 
-<number> = <number> <e3> {nf.math.mul($1,$2)};
+//<number> = <number> <e3> {nf.math.mul($1,$2)};
+//<number> = <number> <e6> {nf.math.mul($1,$2)};
